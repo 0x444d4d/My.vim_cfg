@@ -1,3 +1,5 @@
+" Run "git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim""
+" and "ln -s ~/.vim/.vimrc ~/.vimrc" to install vundle and this config.
 " vundle {{{1
 
 " needed to run vundle (but i want this anyways)
@@ -14,7 +16,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 " start vundle environment
 call vundle#begin()
 
-" list of plugins {{{2
+" list of plugins
 " let Vundle manage Vundle (this is required)
 " old: Plugin 'gmarik/Vundle.vim'
 " to install a plugin add it here and run :PluginInstall.
@@ -38,11 +40,9 @@ Plugin 'luchermitte/vim-compil-hints'
 call vundle#end()
 
 " now (after vundle finished) it is save to turn filetype plugins on
-" }}}1
 
 
 "Colors and syntax 
-
 :filetype plugin indent on
 :syntax on
 :let g:solarized_termcolors=256
@@ -52,7 +52,6 @@ call vundle#end()
 
 
 "Auto togle numbers/relativenumbers
-
 :augroup numbertoggle
 :  autocmd!
 :  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
@@ -64,7 +63,6 @@ call vundle#end()
 
 
 "Abreviaciones.
-
 :ab pri printf(" ");
 :ab sca scanf(" ", );
 :ab inc #include <stdio.h>
@@ -73,7 +71,6 @@ call vundle#end()
 
 
 "Navegacion entre ventanas
-
 :nnoremap <C-J> <C-W><C-J>
 :nnoremap <C-K> <C-W><C-K>
 :nnoremap <C-L> <C-W><C-L>
@@ -87,7 +84,6 @@ call vundle#end()
 
 
 "Configuracion de netrw
-
 :let g:netrw_liststyle = 3
 :let g:netrw_banner = 0
 "
