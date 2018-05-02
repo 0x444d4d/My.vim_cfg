@@ -28,9 +28,10 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'somini/vim-autoclose'
 Plugin 'ervandew/supertab'
 Plugin 'nightsense/simplifysimplify'
-Plugin 'godlygook/csapprox'
+"Plugin 'godlygook/csapprox'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'ARM9/mips-syntax-vim'
+Plugin 'tpope/vim-fugitive'
 "Plugin 'Valloric/YouCompleteMe'
 " add plugins before this
 call vundle#end()
