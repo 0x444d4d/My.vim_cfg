@@ -32,6 +32,7 @@ Plugin 'nightsense/simplifysimplify'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'ARM9/mips-syntax-vim'
 Plugin 'tpope/vim-fugitive'
+Plugin 'luchermitte/vim-compil-hints'
 "Plugin 'Valloric/YouCompleteMe'
 " add plugins before this
 call vundle#end()
