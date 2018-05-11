@@ -30,6 +30,7 @@ Plugin 'luchermitte/vim-compil-hints'
 Plugin 'romgrk/winteract.vim'
 "Plugin 'vim-scripts/ZoomWin'
 "Plugin 'Valloric/YouCompleteMe'
+Plugin 'vim-scripts/a.vim'
 " add plugins before this
 call vundle#end()
 
