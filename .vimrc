@@ -22,15 +22,14 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'somini/vim-autoclose'
 Plugin 'ervandew/supertab'
 Plugin 'nightsense/simplifysimplify'
-"Plugin 'godlygook/csapprox'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'ARM9/mips-syntax-vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'luchermitte/vim-compil-hints'
 Plugin 'romgrk/winteract.vim'
 "Plugin 'vim-scripts/ZoomWin'
-"Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-scripts/a.vim'
+Plugin'nightsense/carbonized'
 " add plugins before this
 call vundle#end()
 
