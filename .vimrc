@@ -25,12 +25,18 @@ Plugin 'nightsense/simplifysimplify'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'ARM9/mips-syntax-vim'
 Plugin 'tpope/vim-fugitive'
-Plugin 'luchermitte/vim-compil-hints'
+"Plugin 'luchermitte/vim-compil-hints'
 Plugin 'romgrk/winteract.vim'
+Plugin 'vhda/verilog_systemverilog.vim'
 "Plugin 'vim-scripts/ZoomWin'
 Plugin 'vim-scripts/a.vim'
-Plugin'nightsense/carbonized'
+Plugin 'nightsense/carbonized'
+"Plugin 'gilligan/vim-lldb'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'Conque-GDB'
+
 " add plugins before this
+
 call vundle#end()
 
 " now (after vundle finished) it is save to turn filetype plugins on
@@ -108,3 +114,13 @@ noremap j jzz
 noremap k kzz
 cnoremap Mks mks!<enter>
 cnoremap vres vertical resize
+
+"syntastic config
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
