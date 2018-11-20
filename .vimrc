@@ -71,9 +71,8 @@ nmap gw        :InteractiveWindow<CR>
 
 
 "Abreviaciones.
-:ab pri printf(" ");
 :ab sca scanf(" ", );
-:ab inc #include <stdio.h>
+:ab inc #include <>
 :ab mai int main(  ) {} 
 :ab for for (; ; ) {}  
 
@@ -83,6 +82,8 @@ nmap gw        :InteractiveWindow<CR>
 :nnoremap <C-K> <C-W><C-K>
 :nnoremap <C-L> <C-W><C-L>
 :nnoremap <C-H> <C-W><C-H>
+:nnoremap <C-/> I//<esc>
+:nnoremap <C-#> I#<esc>
 "maximizar/minimizar splits
 ":nnoremap <C-_> <C-W><C-_>
 ":nnoremap <C-|> <C-W><C-|>
@@ -109,9 +110,14 @@ inoremap - _
 inoremap _ -
 inoremap ' "
 inoremap " '
+inoremap cout std::cout
+inoremap cin std::cin
+inoremap vector std::vector<>
 inoremap null NULL
+
 noremap j jzz
 noremap k kzz
+
 cnoremap Mks mks!<enter>
 cnoremap vres vertical resize
 
