@@ -42,7 +42,10 @@ call vundle#end()
 " now (after vundle finished) it is save to turn filetype plugins on
 
 
-
+"Save foldings
+autocmd BufWinLeave *.* mkview
+autocmd BufWinEnter *.* silent
+loadview
 
 
 
