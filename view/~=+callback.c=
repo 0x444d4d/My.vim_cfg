@@ -1,5 +1,9 @@
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 argglobal
+let s:cpo_save=&cpo
+set cpo&vim
+snoremap <buffer> <silent> <NL> :call UltiSnips#JumpForwards()
+snoremap <buffer> <silent>  :call UltiSnips#JumpBackwards()
 xnoremap <buffer> <silent> \a] `>a]`<i[
 xnoremap <buffer> <silent> \a[ `>a]`<i[
 xnoremap <buffer> <silent> \a) `>a)`<i(
@@ -9,6 +13,10 @@ xnoremap <buffer> <silent> \a} `>a}`<i{
 xnoremap <buffer> <silent> \a{ `>a}`<i{
 xnoremap <buffer> <silent> \a" `>a"`<i"
 xnoremap <buffer> <silent> \a` `>a``<i`
+inoremap <buffer> <silent> <NL> =UltiSnips#JumpForwards()
+inoremap <buffer> <silent>  =UltiSnips#JumpBackwards()
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -42,8 +50,8 @@ setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
 setlocal expandtab
-if &filetype != 'cpp'
-setlocal filetype=cpp
+if &filetype != 'c'
+setlocal filetype=c
 endif
 setlocal fixendofline
 setlocal foldcolumn=0
@@ -82,13 +90,13 @@ setlocal modifiable
 setlocal nrformats=bin,octal,hex
 setlocal number
 setlocal numberwidth=4
-setlocal omnifunc=ccomplete#Complete
+setlocal omnifunc=omni#cpp#complete#Main
 setlocal path=
 setlocal nopreserveindent
 setlocal nopreviewwindow
 setlocal quoteescape=\\
 setlocal noreadonly
-setlocal norelativenumber
+setlocal relativenumber
 setlocal norightleft
 setlocal rightleftcmd=search
 setlocal noscrollbind
@@ -107,8 +115,8 @@ setlocal statusline=%!airline#statusline(2)
 setlocal suffixesadd=
 setlocal swapfile
 setlocal synmaxcol=3000
-if &syntax != 'cpp'
-setlocal syntax=cpp
+if &syntax != 'c'
+setlocal syntax=c
 endif
 setlocal tabstop=4
 setlocal tagcase=
@@ -127,13 +135,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 45 - ((28 * winheight(0) + 30) / 60)
+let s:l = 19 - ((18 * winheight(0) + 30) / 60)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-45
-normal! 0
-lcd ~/Documents/C++/AEDA/p5
+19
+normal! 027|
 let &so = s:so_save | let &siso = s:siso_save
 nohlsearch
 doautoall SessionLoadPost
