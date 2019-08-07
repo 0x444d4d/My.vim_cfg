@@ -17,24 +17,28 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " YOUR LIST OF PLUGINS GOES HERE LIKE THIS: 
-Plugin 'bling/vim-airline' 
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'somini/vim-autoclose'
+"Plugin 'bling/vim-airline' 
+Plugin 'sheerun/vim-polyglot'
+Plugin 'severin-lemaignan/vim-minimap' "Sublime Text like minimap
+Plugin 'vim-utils/vim-man' "Man pages inside linux
+Plugin 'kien/tabman.vim' "Tab manager
+Plugin 'VundleVim/Vundle.vim' "Plugin manager
+Plugin 'somini/vim-autoclose' "Close parenthesis, etc. automatically
 Plugin 'ervandew/supertab'
 Plugin 'nightsense/simplifysimplify'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'ARM9/mips-syntax-vim'
+Plugin 'altercation/vim-colors-solarized' "Solarized color scheme
+Plugin 'ARM9/mips-syntax-vim' "Mips sintax
 Plugin 'tpope/vim-fugitive'
-"Plugin 'luchermitte/vim-compil-hints'
 Plugin 'romgrk/winteract.vim'
 Plugin 'vhda/verilog_systemverilog.vim'
-"Plugin 'vim-scripts/ZoomWin'
 Plugin 'vim-scripts/a.vim'
 Plugin 'nightsense/carbonized'
-"Plugin 'gilligan/vim-lldb'
-Plugin 'vim-syntastic/syntastic'
 Plugin 'Conque-GDB'
-
+Plugin 'tpope/vim-eunuch'
+Plugin 'junegunn/fzf.vim' "Fuzzy finder
+Plugin 'dikiaap/minimalist' "Dark colour scheme
+Plugin 'crusoexia/vim-monokai'
+"Plugin 'fatih/vim-go'
 " add plugins before this
 
 call vundle#end()
@@ -43,9 +47,11 @@ call vundle#end()
 
 
 "Save foldings
-autocmd BufWinLeave *.* mkview
-autocmd BufWinEnter *.* silent
-loadview
+augroup remember_folds
+    autocmd!
+    autocmd BufWinLeave *.* mkview
+    autocmd BufWinEnter *.* silent! loadview
+augroup END
 
 
 
@@ -58,7 +64,7 @@ nmap gw        :InteractiveWindow<CR>
 :syntax on
 :let g:solarized_termcolors=256
 :set background=dark
-:colorscheme solarized 
+:colorscheme monokai
 :set number relativenumber
 
 
@@ -70,15 +76,10 @@ nmap gw        :InteractiveWindow<CR>
 :augroup END
 
 "indent size config
-:set ts=2 sw=2 et
+:set ts=4 sw=4 et
 
-
-"Abreviaciones.
-:ab sca scanf(" ", );
-:ab inc #include <>
-:ab mai int main(  ) {} 
-:ab for for (; ; ) {}  
-
+" Set this. Airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1
 
 "Navegacion entre ventanas
 :nnoremap <C-J> <C-W><C-J>
@@ -90,6 +91,7 @@ nmap gw        :InteractiveWindow<CR>
 "maximizar/minimizar splits
 ":nnoremap <C-_> <C-W><C-_>
 ":nnoremap <C-|> <C-W><C-|>
+
 
 :set splitbelow
 :set splitright
@@ -109,17 +111,23 @@ nmap gw        :InteractiveWindow<CR>
 :set foldmethod=manual
 
 inoremap jk <esc>
-inoremap - _
-inoremap _ -
-inoremap ' "
-inoremap " '
-inoremap cout std::cout
-inoremap cin std::cin
-inoremap vector std::vector<>
-inoremap null NULL
-
 noremap j jzz
 noremap k kzz
+nnoremap <S-h> gT
+nnoremap <S-l> gt
+
+"TabMan
+map<S-n> :TMToggle<CR>
+
+"NerdTree
+:function ToggleNTree()
+:NERDTreeToggle<CR><C-w>=
+:endfunction
+
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+nnoremap <C-n> :NERDTreeToggle<Bar>execute "normal! \<lt>C-w>="<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 cnoremap Mks mks!<enter>
 cnoremap vres vertical resize
@@ -133,3 +141,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
+
+
+let g:minimap_highlight='Visual'
+
